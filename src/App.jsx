@@ -8,12 +8,32 @@ import Bookmarks from './pages/Bookmarks'
 import SearchResults from "./pages/SearchResults"
 import Settings from './pages/Settings'
 import Category from "./pages/Category"
+import {ThemeProvider} from "./contexts/theme"
+import ThemeBtn from "./components/ThemeBtn"
+import { useState, useEffect } from 'react'
 
 function App() {
+  const [themeMode, setThemeMode] = useState('dark');
+
+  const lightTheme = () => {
+    setThemeMode('light');
+  }
+
+  const darkTheme = () => {
+    setThemeMode('dark');
+  }
+
+  //actual change in theme (UI)
+  useEffect(() => {
+    document.querySelector('html').classList.remove('light', 'dark');
+    document.querySelector('html').classList.add(themeMode);
+  }, [themeMode]);
+
   return (
-    <>
+      <ThemeProvider value={{themeMode, lightTheme, darkTheme}}>
       <BrowserRouter>
-        <div className="min-h-screen flex flex-col">
+      <ThemeBtn />
+        <div className="min-h-screen flex flex-col bg-white text-black border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:text-white">
             <Header />
             <main className="flex-grow">
                 <Routes>
@@ -28,7 +48,7 @@ function App() {
             <Footer />
         </div>
       </BrowserRouter>
-    </>
+      </ThemeProvider>
   )
 }
 
