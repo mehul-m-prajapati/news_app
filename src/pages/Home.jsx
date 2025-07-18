@@ -1,9 +1,9 @@
 import Card from "../components/Card"
-import { useContext } from "react";
-import { NewsContext } from "../contexts/NewsContext";
+import { useNews } from "../contexts/NewsContext";
 
 function Home() {
-    const { newsData, setSearch } = useContext(NewsContext);
+    const { newsData, loading, error, loadMore, setSearch } = useNews();
+
     const userInput = (event) =>{
         setSearch(event.target.value);
     }
@@ -48,7 +48,29 @@ function Home() {
                 Fitness
             </button>
         </div>
-        {newsData ? <Card data={newsData} /> : <p>Loading...</p>}
+
+        {/* News Cards */}
+        <div className="p-4">
+            <h1 className="text-2xl font-bold mb-4">Latest News</h1>
+
+            {error && <p className="text-red-500">{error}</p>}
+
+            <Card data={newsData} />
+
+            {loading && (
+                <div className="flex justify-center my-4">
+                    <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+                </div>
+            )}
+
+            {!loading && (
+                <div className="flex justify-center mt-4">
+                    <button onClick={loadMore} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                        Load More
+                    </button>
+                </div>
+            )}
+        </div>
         </>
     );
 }

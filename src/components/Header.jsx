@@ -1,30 +1,19 @@
 import {Link} from "react-router-dom"
 import ThemeBtn from "./ThemeBtn"
-import { useEffect, useContext } from "react"
+import { useEffect, useContext, useState } from "react"
 import axios from "axios"
-import { NewsContext } from "../contexts/NewsContext"
+import { useNews } from "../contexts/NewsContext"
 
 function Header() {
-    const { search, setSearch, setNewsData } = useContext(NewsContext);
-    const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+    const { setSearch } = useNews();
+    const [searchBox, setSearchBox] = useState("");
 
     const getData = async() =>{
-
-        try {
-            const response = await axios.get(`https://newsapi.org/v2/everything?q=${search}&apiKey=${API_KEY}`);
-            let dt = response.data.articles.slice(0,10);
-            setNewsData(dt);
-        } catch (error) {
-            console.log("Axios error:", error.message);
-        }
+        setSearch(searchBox);
     }
 
-    useEffect(()=>{
-        getData()
-    },[]);
-
     const handleInputChange = (e) =>{
-        setSearch(e.target.value);
+        setSearchBox(e.target.value);
     }
 
     return (
@@ -42,7 +31,7 @@ function Header() {
             <div className="flex items-center space-x-2 rounded shadow-md w-full max-w-md">
                 <input
                     onChange={handleInputChange}
-                    value={search}
+                    value={searchBox}
                     type="text"
                     placeholder="Search News"
                     className="flex-grow px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
