@@ -6,11 +6,10 @@ import Home from './pages/Home'
 import Category from "./pages/Category"
 import {ThemeProvider} from "./contexts/theme"
 import { useState, useEffect } from 'react'
+import { NewsProvider } from "./contexts/NewsContext";
 
 function App() {
   const [themeMode, setThemeMode] = useState('dark');
-  const [newsData, setNewsData] = useState(null);
-  const [search, setSearch] = useState("india");
 
   const lightTheme = () => {
     setThemeMode('light');
@@ -28,18 +27,20 @@ function App() {
 
   return (
       <ThemeProvider value={{themeMode, lightTheme, darkTheme}}>
-        <BrowserRouter>
-            <div className="min-h-screen flex flex-col bg-white text-black border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 dark:text-white">
-                <Header setNewsData={setNewsData} search={search} setSearch={setSearch} />
-                <main className="flex-grow">
-                    <Routes>
-                        <Route path='/' element={<Home newsData={newsData} setSearch={setSearch} />} />
-                        <Route path="/category/:categoryName" element={<Category />} />
-                    </Routes>
-                </main>
-                <Footer />
-            </div>
-        </BrowserRouter>
+        <NewsProvider>
+            <BrowserRouter>
+                <div className="min-h-screen flex flex-col bg-white text-black border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 dark:text-white">
+                    <Header />
+                    <main className="flex-grow">
+                        <Routes>
+                            <Route path='/' element={<Home />} />
+                            <Route path="/category/:categoryName" element={<Category />} />
+                        </Routes>
+                    </main>
+                    <Footer />
+                </div>
+            </BrowserRouter>
+        </NewsProvider>
       </ThemeProvider>
   )
 }

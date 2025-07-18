@@ -1,11 +1,11 @@
 import {Link} from "react-router-dom"
 import ThemeBtn from "./ThemeBtn"
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect, useContext } from "react"
+import axios from "axios"
+import { NewsContext } from "../contexts/NewsContext"
 
-function Header({setNewsData, search, setSearch}) {
-
-    //const [search, setSearch] = useState("india");
+function Header() {
+    const { search, setSearch, setNewsData } = useContext(NewsContext);
     const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
     const getData = async() =>{

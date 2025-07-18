@@ -1,9 +1,13 @@
 import Card from "../components/Card"
+import { useContext } from "react";
+import { NewsContext } from "../contexts/NewsContext";
 
-function Home({newsData, setSearch}) {
+function Home() {
+    const { newsData, setSearch } = useContext(NewsContext);
     const userInput = (event) =>{
         setSearch(event.target.value);
     }
+
     return (
         <>
         {/* Search Category */}
