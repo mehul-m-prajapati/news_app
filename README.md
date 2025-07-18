@@ -1,12 +1,76 @@
-# React + Vite
+# 📰 News Hub – React News App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **News Hub**, a responsive and modern news application built with **React**, **Tailwind CSS**, and the [NewsAPI](https://newsapi.org/). It allows users to:
 
-Currently, two official plugins are available:
+- 🔍 Search for real-time news by keyword
+- 🗂️ Browse news by categories (e.g. Politics, Sports, Health)
+- 🌙 Toggle between light and dark mode
+- 📑 View detailed articles in a new tab
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ✅ Search bar for real-time news queries
+- ✅ Category-based news filtering
+- ✅ Axios-based API fetching with error handling
+- ✅ Tailwind CSS for clean and responsive UI
+- ✅ React Router for page navigation
+- ✅ Context API for theme and news state management
+- ✅ `.env` support for keeping API keys secure
+
+---
+
+## 📸 Screenshots
+
+<!-- Add your screenshots here -->
+> _You can use tools like `Lightshot`, `Snipping Tool`, or take screenshots directly from the browser and add them to your GitHub repo under `/assets` or `/public`_
+
+---
+
+## 🛠️ Tech Stack
+
+| Tech        | Description                          |
+|-------------|--------------------------------------|
+| React       | JavaScript UI library                |
+| Tailwind CSS| Utility-first CSS framework          |
+| Axios       | Promise-based HTTP client            |
+| React Router| Declarative routing for React        |
+| Context API | Global state management              |
+| Vite        | Fast frontend tooling (optional)     |
+
+---
+
+## 🔐 Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/news_app.git
+cd news_app
+
+npm install
+
+Create a .env file in the root directory and add your API key:
+VITE_NEWS_API_KEY=your_newsapi_key_here
+
+npm run dev
+```
+
+## 🧩 Folder Structure
+
+src/
+├── components/        # Reusable components (Header, Footer, Card)
+├── contexts/          # ThemeContext, NewsContext
+├── pages/             # Page-level components (Home, Category)
+├── App.jsx            # Root component
+├── main.jsx           # Entry point
+├── assets/            # Images & logos
+
+
+## 🧪 Future Enhancements
+🔖 Bookmark articles with local storage or Firebase
+📱 Mobile-first responsiveness improvements
+🌐 International news by country toggle
+💬 Add toast notifications for errors
+🗂️ Paginate news results
