@@ -59,8 +59,10 @@ src/
 ```
 
 ## 🧪 Future Enhancements
+```
 🔖 Bookmark articles with local storage or Firebase
 📱 Mobile-first responsiveness improvements
 🌐 International news by country toggle
 💬 Add toast notifications for errors
 🗂️ Paginate news results
+```
