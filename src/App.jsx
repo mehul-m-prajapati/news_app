@@ -31,23 +31,22 @@ function App() {
 
   return (
       <ThemeProvider value={{themeMode, lightTheme, darkTheme}}>
-      <BrowserRouter>
-      <ThemeBtn />
-        <div className="min-h-screen flex flex-col bg-white text-black border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:text-white">
-            <Header />
-            <main className="flex-grow">
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/article/:id' element={<ArticleDetail />} />
-                    <Route path="/search" element={<SearchResults />} />
-                    <Route path="/category/:categoryName" element={<Category />} />
-                    <Route path="/bookmarks" element={<Bookmarks />} />
-                    <Route path="/settings" element={<Settings />} />
-                </Routes>
-            </main>
-            <Footer />
-        </div>
-      </BrowserRouter>
+        <BrowserRouter>
+            <div className="min-h-screen flex flex-col bg-white text-black border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700 dark:text-white">
+                <Header />
+                <main className="flex-grow">
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/article/:id' element={<ArticleDetail />} />
+                        <Route path="/search" element={<SearchResults />} />
+                        <Route path="/category/:categoryName" element={<Category />} />
+                        <Route path="/bookmarks" element={<Bookmarks />} />
+                        <Route path="/settings" element={<Settings />} />
+                    </Routes>
+                </main>
+                <Footer />
+            </div>
+        </BrowserRouter>
       </ThemeProvider>
   )
 }
